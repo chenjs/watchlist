@@ -62,9 +62,8 @@ class Movie(db.Model):
 @app.route('/')
 def index():
 	# return render_template('index.html', name=name, movies=movies)
-	user = User.query.first()
 	movies = Movie.query.all()
-	return render_template('index.html', user=user, movies=movies)
+	return render_template('index.html', movies=movies)
 	
 
 @app.route('/home')
@@ -91,6 +90,15 @@ def test_url_for():
 	
 	return 'test_page'
 	
+@app.context_processor
+def inject_user():
+	current_user = User.query.first()
+	return dict(user=current_user)
+
+@app.errorhandler(404)
+def page_not_found(e):
+	return render_template('404.html'), 404
+
 	
 
 	
