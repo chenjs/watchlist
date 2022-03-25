@@ -4,5 +4,8 @@ __pychahe__
 .DS_Store
 .env
 *.db
+htmlcov/
+.coverage
+
 
 

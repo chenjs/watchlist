@@ -75,7 +75,7 @@ def admin(username, password):
 	user = User.query.first()
 
 	if user is not None:
-		click.echo('Updating user...')
+		click.echo('Updating user ...')
 		user.username = username
 		user.set_password(password)
 	else:
@@ -136,7 +136,7 @@ def edit(movie_id):
 		year = request.form['year']
 		if not title or not year or len(year)<4 or len(title)>60:
 			flash("Invalid input.")
-			return redirect(url_for('edit'), movie_id=movie_id)
+			return redirect(url_for('edit', movie_id=movie_id))
 		movie.title = title
 		movie.year = year
 		db.session.commit()
@@ -190,7 +190,7 @@ def settings():
 
 		if not name or len(name) > 20:
 			flash('Invalid input.')
-			redirect(url_for('settings'))
+			return redirect(url_for('settings'))
 
 		current_user.name = name
 		db.session.commit()
