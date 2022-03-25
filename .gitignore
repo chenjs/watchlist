@@ -6,6 +6,9 @@ __pychahe__
 *.db
 htmlcov/
 .coverage
+env
+venv
+
 
 
 
